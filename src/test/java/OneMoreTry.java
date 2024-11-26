@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-public class oneMoreTry {
+public class OneMoreTry {
     @BeforeAll
     static void beforeAll() {
     Configuration.browserSize = "1920x1080";
@@ -21,6 +20,8 @@ public class oneMoreTry {
     @Test
     void testForForm(){
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Anatoly");
         $("#lastName").setValue("Vorishka");
         $("#userEmail").setValue("ganja@gmail.com");
