@@ -38,8 +38,9 @@ public class GitHubTest {
                 "    $(\"#second\").should(visible).click();\n" +
                 "  }\n" +
                 "}"));
+        // find JUnit5 example
 
-        sleep(5000);
+        //sleep(5000);
     }
 }
 
@@ -48,9 +49,9 @@ public class GitHubTest {
 
 
 
-    // find JUnit5 example
 
-        //$("div.wiki-body").find(byText("SoftAssertions")).click();
+
+
 
 
 
