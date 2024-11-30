@@ -18,7 +18,7 @@ public class GitHubTest {
     }
 
     @Test
-    void testGitHub(){
+    void testGitHubTest(){
         open("/selenide/selenide");
         //open selenide page
         $("#wiki-tab").click();
