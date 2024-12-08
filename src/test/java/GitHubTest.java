@@ -1,24 +1,22 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byLinkText;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class GitHubTest {
     @BeforeAll
-    static void BeforeAll(){
+    static void BeforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com";
 
     }
 
     @Test
-    void testGitHubTest(){
+    void testGitHubTest() {
         open("/selenide/selenide");
         //open selenide page
         $("#wiki-tab").click();
