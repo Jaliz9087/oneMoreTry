@@ -21,8 +21,6 @@ public class DrNDr {
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
-
-        sleep(5000);
     }
 
 }
