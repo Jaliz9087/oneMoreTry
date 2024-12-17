@@ -1,61 +1,51 @@
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pges.RegPag;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
-public class OneMoreTry {
-    @BeforeAll
-    static void beforeAll() {
-    Configuration.browserSize = "1920x1080";
-    Configuration.baseUrl = "https://demoqa.com";
-    Configuration.pageLoadStrategy = "eager";
-
-
-
-}
+public class OneMoreTry extends TestBase {
+    RegPag regPag = new RegPag();
 
     @Test
     void testForForm(){
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        $("#firstName").setValue("Anatoly");
-        $("#lastName").setValue("Vorishka");
-        $("#userEmail").setValue("ganja@gmail.com");
-        $("#genterWrapper").$(byText("Male")).click();
-        $("#userNumber").setValue("0000000000");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("January");
-        $(".react-datepicker__year-select").selectOption("2009");
-        $(".react-datepicker__day.react-datepicker__day--003").click();
-        $("#subjectsInput").setValue("Maths").pressEnter();
-        $("#hobbiesWrapper").$(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("mountain-reflections-3840x2400.png");
-        $("#currentAddress").setValue("Niznekamsk");
-        $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("#react-select-4-input").setValue("Noida").pressEnter();
+        regPag.openPage()
+                .removeBan()
 
-        $("#submit").click();
+            .SetFirstName("Anatoly")
+            .SetLastName("Vorishka")
+            .SetUserEmail("ganja@gmail.com")
+            .SetGender("Male")
+            .SetUserNumber("0000000000").
+                SetBirthDate("3","January", "2009")
+            .SetSubject("Maths")
+                .SetHobbies("Music")
+            .SetUploadPicture("mountain-reflections-3840x2400.png")
+            .SetSelectAddress("Niznekamsk")
+            .SetSelectState("NCR")
+            .SetSelectCity("Noida").ClickSubmitForm();
 
         //Проверяем че там отработало
 
-        $(".table").$(byText("Student Name")).sibling(0).shouldHave(text("Anatoly Vorishka"));
-        $(".table").$(byText("Student Email")).sibling(0).shouldHave(text("ganja@gmail.com"));
-        $(".table").$(byText("Gender")).sibling(0).shouldHave(text("Male"));
-        $(".table").$(byText("Mobile")).sibling(0).shouldHave(text("0000000000"));
-        $(".table").$(byText("Date of Birth")).sibling(0).shouldHave(text("03 January,2009"));
-        $(".table").$(byText("Subjects")).sibling(0).shouldHave(text("Maths"));
-        $(".table").$(byText("Hobbies")).sibling(0).shouldHave(text("Music"));
-        $(".table").shouldHave(text("Picture")).shouldHave(text("mountain-reflections-3840x2400.png"));
-        $(".table").$(byText("Address")).sibling(0).shouldHave(text("Niznekamsk"));
-        $(".table").$(byText("State and City")).sibling(0).shouldHave(text("NCR Noida"));
+        regPag.checkResult("Student Name", "Anatoly Vorishka")
+        .checkResult("Student Email" , "ganja@gmail.com")
+                .checkResult("Gender", "Male")
+                .checkResult("Mobile", "0000000000")
+                .checkResult("Date of Birth", "03 January,2009")
+                .checkResult("Subjects","Maths")
+                .checkResult("Hobbies","Music")
+                .checkResult("Picture", "mountain-reflections-3840x2400.png")
+                .checkResult("Address", "Niznekamsk")
+                .checkResult("State and City", "NCR Noida");
 
 
 
 
 
     }
+//    @Test
+//    void testForForm2(){
+//        open("/automation-practice-form");
+//        executeJavaScript("$('#fixedban').remove()");
+//        executeJavaScript("$('footer').remove()");
+//        $("#firstName").setValue("Anatoly");
+//        $("#lastName").setValue("Vorishka");
+//    }
 }
