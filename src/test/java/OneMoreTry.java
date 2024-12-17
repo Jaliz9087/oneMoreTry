@@ -40,12 +40,50 @@ public class OneMoreTry extends TestBase {
 
 
     }
-//    @Test
-//    void testForForm2(){
-//        open("/automation-practice-form");
-//        executeJavaScript("$('#fixedban').remove()");
-//        executeJavaScript("$('footer').remove()");
-//        $("#firstName").setValue("Anatoly");
-//        $("#lastName").setValue("Vorishka");
-//    }
+@Test
+    void negativeTest(){
+        regPag.openPage()
+                .removeBan()
+                .SetFirstName("") //не заполняем одно из обязательных полей
+                .SetLastName("")
+                .SetUserEmail("bhbjd-llao")
+                .SetGender("Male")
+                .SetUserNumber("LAOKA09866")
+                .SetBirthDate("3","January", "2009")
+                .SetSubject("Maths")
+                .SetHobbies("Music")
+                .SetUploadPicture("mountain-reflections-3840x2400.png")
+                .SetSelectAddress("Niznekamsk")
+                .SetSelectState("NCR")
+                .SetSelectCity("Noida").ClickSubmitForm();
+
+        regPag.InvalidFirstName()
+                .InvalidLastName()
+                .InvalidUserEmail();
+
+}
+@Test
+    void minimalFillForm(){
+        regPag.openPage()
+                .removeBan()
+                .SetFirstName("Anatoly")
+                .SetLastName("Vorishka")
+                .SetUserEmail("ganja@gmail.com")
+                .SetGender("Male")
+                .SetUserNumber("0000000000")
+                .SetBirthDate("3","January", "2009")
+                .SetHobbies("Music")
+                .SetSelectAddress("Niznekamsk")
+                        .ClickSubmitForm();
+
+
+        regPag.checkResult("Student Name", "Anatoly Vorishka")
+                .checkResult("Student Email" , "ganja@gmail.com")
+                .checkResult("Gender", "Male")
+                .checkResult("Mobile", "0000000000")
+                .checkResult("Date of Birth", "03 January,2009")
+                .checkResult("Hobbies", "Music")
+                .checkResult("Address", "Niznekamsk");
+
+}
 }

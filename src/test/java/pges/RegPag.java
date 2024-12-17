@@ -1,5 +1,6 @@
 package pges;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pges.components.CalendarComponent;
 import pges.components.CheckResultTable;
@@ -103,6 +104,55 @@ public class RegPag {
         checkResultTable.CheckResult(key, value);
         return this;
 
+    }
+
+    //fpr negTest
+    public RegPag InvalidFirstName(){
+        firstNameInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+    }
+
+    public RegPag InvalidLastName(){
+        lastNameInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+    }
+    public RegPag InvalidUserEmail(){
+        userEmailInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
+        return this;
+    }
+    //minTest
+    public RegPag fillFirstName(String value){
+        firstNameInput.setValue(value);
+        return this;
+    }
+    public RegPag fillLastName(String value){
+        lastNameInput.setValue(value);
+        return this;
+    }
+    public RegPag fillUserEmail(String value){
+        userEmailInput.setValue(value);
+        return this;
+    }
+    public RegPag fillGender(String value){
+        selectGender.$(byText(value)).click();
+        return this;
+    }
+    public RegPag fillUserNumber(String value){
+        userNumInput.setValue(value);
+        return this;
+    }
+    public RegPag fillBirthDate(String day, String month, String year){
+        calendarDateInput.click();
+        calendarComponent.SetDate(day, month, year);
+        return this;
+    }
+    public RegPag fillHobbies(String value){
+        selectHobbies.$(byText(value)).click();
+        return this;
+    }
+    public RegPag fillAddress(String value){
+        selectAddress.setValue(value);
+        return this;
     }
 
 }
