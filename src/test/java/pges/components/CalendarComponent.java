@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class CalendarComponent {
-    public void SetDate(String day, String month, String year){
+    public void SetDate(String day, String month, String year) {
 
         $(".react-datepicker__month-select").selectOptionContainingText(month);
         $(".react-datepicker__year-select").selectOptionByValue(year);
