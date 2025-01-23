@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pges.RegPag;
 import utils.ForFaker;
@@ -8,6 +9,7 @@ import utils.ForFaker;
     ForFaker forFaker = new ForFaker();
 
     @Test
+    @Tag("simple_test")
     void formTest() {
         regPag.openPage()
                 .removeBan()
