@@ -3,7 +3,8 @@ import pges.RegPag;
 import utils.ForFaker;
 
  public class OneMoreTry extends TestBase {
-    RegPag regPag = new RegPag();
+    RegPag regPag =
+            new RegPag();
     ForFaker forFaker = new ForFaker();
 
     @Test
