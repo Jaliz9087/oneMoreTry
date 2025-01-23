@@ -9,7 +9,7 @@ import utils.ForFaker;
     ForFaker forFaker = new ForFaker();
 
     @Test
-    @Tag("simple_test")
+    @Tag("simple")
     void formTest() {
         regPag.openPage()
                 .removeBan()
