@@ -1,10 +1,9 @@
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pges.RegPag;
 import utils.ForFaker;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 
 import static io.qameta.allure.Allure.step;
 
@@ -46,49 +45,55 @@ public class OneMoreTry extends TestBase {
                     .checkResult("Address", forFaker.Address)
                     .checkResult("State and City", forFaker.state + " " + forFaker.city);
         });
-        @Test
-        void negativeTest () {
-            regPag.openPage()
-                    .removeBan()
-                    .SetFirstName("")
-                    .SetLastName("")
-                    .SetUserEmail("bhbjd-llao")
-                    .SetGender("Male")
-                    .SetUserNumber("LAOKA09866")
-                    .SetBirthDate("3", "January", "2009")
-                    .SetSubject("Maths")
-                    .SetHobbies("Music")
-                    .SetUploadPicture("mountain-reflections-3840x2400.png")
-                    .SetSelectAddress("Niznekamsk")
-                    .SetSelectState("NCR")
-                    .SetSelectCity("Noida").ClickSubmitForm();
-            regPag.InvalidFirstName()
-                    .InvalidLastName()
-                    .InvalidUserEmail();
+    }
 
+        @Test
+        void negativeTest() {
+            step("negativeFillForm n submit", () -> {
+                regPag.SetFirstName("")
+                        .SetLastName("")
+                        .SetUserEmail("bhbjd-llao")
+                        .SetGender("Male")
+                        .SetUserNumber("LAOKA09866")
+                        .SetBirthDate("3", "January", "2009")
+                        .SetSubject("Maths")
+                        .SetHobbies("Music")
+                        .SetUploadPicture("mountain-reflections-3840x2400.png")
+                        .SetSelectAddress("Niznekamsk")
+                        .SetSelectState("NCR")
+                        .SetSelectCity("Noida")
+                        .ClickSubmitForm();
+            });
+            step("Check errors", () -> {
+                regPag.InvalidFirstName()
+                        .InvalidLastName()
+                        .InvalidUserEmail();
+            });
         }
         @Test
         void minimalFillFormTest () {
-            regPag.openPage()
-                    .removeBan()
-                    .SetFirstName("Anatoly")
-                    .SetLastName("Vorishka")
-                    .SetUserEmail("ganja@gmail.com")
-                    .SetGender("Male")
-                    .SetUserNumber("0000000000")
-                    .SetBirthDate("3", "January", "2009")
-                    .SetHobbies("Music")
-                    .SetSelectAddress("Niznekamsk")
-                    .ClickSubmitForm();
-            regPag.checkResult("Student Name", "Anatoly Vorishka")
-                    .checkResult("Student Email", "ganja@gmail.com")
-                    .checkResult("Gender", "Male")
-                    .checkResult("Mobile", "0000000000")
-                    .checkResult("Date of Birth", "03 January,2009")
-                    .checkResult("Hobbies", "Music")
-                    .checkResult("Address", "Niznekamsk");
+            step("minimal fill form n submit", () -> {
+                regPag.openPage()
+                        .removeBan()
+                        .SetFirstName("Anatoly")
+                        .SetLastName("Vorishka")
+                        .SetUserEmail("ganja@gmail.com")
+                        .SetGender("Male")
+                        .SetUserNumber("0000000000")
+                        .SetBirthDate("3", "January", "2009")
+                        .SetHobbies("Music")
+                        .SetSelectAddress("Niznekamsk")
+                        .ClickSubmitForm();
+            });
+            step("Check success result" , () -> {
+                regPag.checkResult("Student Name", "Anatoly Vorishka")
+                        .checkResult("Student Email", "ganja@gmail.com")
+                        .checkResult("Gender", "Male")
+                        .checkResult("Mobile", "0000000000")
+                        .checkResult("Date of Birth", "03 January,2009")
+                        .checkResult("Hobbies", "Music")
+                        .checkResult("Address", "Niznekamsk");
+            });
         }
-
-    }
 }
 
