@@ -25,14 +25,19 @@ allure {
 dependencies {
     testImplementation(
             "com.codeborne:selenide:$selenideVersion",
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            'org.slf4j:slf4j-simple:2.0.7',
-            "com.github.javafaker:javafaker:1.0.2"
+            "org.junit.jupiter:junit-jupiter:5.11.2",
+            "org.slf4j:slf4j-simple:2.0.7",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            'org.aspectj:aspectjweaver:1.9.22.1'
     )
+
+    //testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
+
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -41,13 +46,9 @@ tasks.withType(Test) {
         }
     }
 }
-task simple_test(type: Test) {
+
+task Form_test(type: Test) {
     useJUnitPlatform {
-        includeTags("simple")
-    }
-}
-task demoqa_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("demoqa")
+        includeTags("Form_test")
     }
 }
