@@ -34,11 +34,11 @@ public class RegPag {
         return this;
     }
 
-    public RegPag removeBan() {
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        return this;
-    }
+//    public RegPag removeBan() {
+//        executeJavaScript("$('#fixedban').remove()");
+//        executeJavaScript("$('footer').remove()");
+//        return this;
+//    }
 
     public RegPag SetFirstName(String value) {
         firstNameInput.setValue(value);
