@@ -53,6 +53,7 @@ public class OneMoreTry extends TestBase {
         @Test
         @Tag("Form_test")
         void negativeTest() {
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
             step("negativeFillForm n submit", () -> {
                 regPag.openPage()
                         .SetFirstName("")
@@ -78,6 +79,7 @@ public class OneMoreTry extends TestBase {
         @Test
         @Tag("Form_test")
         void minimalFillFormTest () {
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
             step("minimal fill form n submit", () -> {
                 regPag.openPage()
                         .removeBan()
