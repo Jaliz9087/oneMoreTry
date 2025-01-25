@@ -1,4 +1,6 @@
+import attach.Screen;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -19,5 +21,9 @@ public class TestBase {
 
         ));
         Configuration.browserCapabilities = capabilities;
+    }
+    @AfterEach
+    void getAttach(){
+        Screen.screenshotAs("Screen after each");
     }
 }
