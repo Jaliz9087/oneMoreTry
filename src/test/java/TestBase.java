@@ -27,5 +27,6 @@ public class TestBase {
         Screen.screenshotAs("Screen after each");
         Screen.pageSource();
         Screen.browserConsoleLogs();
+        Screen.addVideo();
     }
 }
