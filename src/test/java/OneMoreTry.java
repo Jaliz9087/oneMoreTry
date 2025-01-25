@@ -18,7 +18,7 @@ public class OneMoreTry extends TestBase {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         step("Заполняем и сабмитим форму", () -> {
             regPag.openPage()
-                   // .removeBan()
+                    .removeBan()
                     .SetFirstName(forFaker.FirstName)
                     .SetLastName(forFaker.LastName)
                     .SetUserEmail(forFaker.UserEmail)
@@ -48,9 +48,11 @@ public class OneMoreTry extends TestBase {
     }
 
         @Test
+        @Tag("Form_test")
         void negativeTest() {
             step("negativeFillForm n submit", () -> {
-                regPag.SetFirstName("")
+                regPag.openPage()
+                        .SetFirstName("")
                         .SetLastName("")
                         .SetUserEmail("bhbjd-llao")
                         .SetGender("Male")
@@ -71,10 +73,11 @@ public class OneMoreTry extends TestBase {
             });
         }
         @Test
+        @Tag("Form_test")
         void minimalFillFormTest () {
             step("minimal fill form n submit", () -> {
                 regPag.openPage()
-                       // .removeBan()
+                        .removeBan()
                         .SetFirstName("Anatoly")
                         .SetLastName("Vorishka")
                         .SetUserEmail("ganja@gmail.com")
