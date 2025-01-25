@@ -32,6 +32,7 @@ public class OneMoreTry extends TestBase {
                     .SetSelectState(forFaker.state)
                     .SetSelectCity(forFaker.city)
                     .ClickSubmitForm();
+
         });
         step("Проверка отработки", () -> {
             regPag.checkResult("Student Name", forFaker.FirstName + " " + forFaker.LastName)
@@ -45,7 +46,9 @@ public class OneMoreTry extends TestBase {
                     .checkResult("Address", forFaker.Address)
                     .checkResult("State and City", forFaker.state + " " + forFaker.city);
         });
+
     }
+
 
         @Test
         @Tag("Form_test")
