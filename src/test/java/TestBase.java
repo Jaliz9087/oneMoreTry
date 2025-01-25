@@ -25,5 +25,7 @@ public class TestBase {
     @AfterEach
     void getAttach(){
         Screen.screenshotAs("Screen after each");
+        Screen.pageSource();
+        Screen.browserConsoleLogs();
     }
 }
