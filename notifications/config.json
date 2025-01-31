@@ -4,7 +4,7 @@
     "project": "Mine project",
     "environment": "demoqa",
     "comment": "Work pls",
-    "reportLink": "https://jenkins.autotests.cloud/job/ExampleProject/30/",
+    "reportLink": "",
     "language": "en",
     "allureFolder": "allure-report",
     "enableChart": true,
