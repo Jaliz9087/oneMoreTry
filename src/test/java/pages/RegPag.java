@@ -1,9 +1,9 @@
-package pges;
+package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import pges.components.CalendarComponent;
-import pges.components.CheckResultTable;
+import pages.components.CalendarComponent;
+import pages.components.CheckResultTable;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;

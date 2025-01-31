@@ -1,4 +1,4 @@
-package pges.components;
+package pages.components;
 
 import com.codeborne.selenide.Condition;
 

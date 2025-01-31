@@ -1,8 +1,6 @@
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pges.RegPag;
+import pages.RegPag;
 import utils.ForFaker;
 
 import static io.qameta.allure.Allure.step;
@@ -15,7 +13,6 @@ public class OneMoreTry extends TestBase {
     @Test
     @Tag("Form_test")
     void formTest() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         step("Заполняем и сабмитим форму", () -> {
             regPag.openPage()
                     .removeBan()
@@ -53,7 +50,6 @@ public class OneMoreTry extends TestBase {
         @Test
         @Tag("Form_test")
         void negativeTest() {
-            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
             step("negativeFillForm n submit", () -> {
                 regPag.openPage()
                         .SetFirstName("")
@@ -79,7 +75,6 @@ public class OneMoreTry extends TestBase {
         @Test
         @Tag("Form_test")
         void minimalFillFormTest () {
-            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
             step("minimal fill form n submit", () -> {
                 regPag.openPage()
                         .removeBan()
